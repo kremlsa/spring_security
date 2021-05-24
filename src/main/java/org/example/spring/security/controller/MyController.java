@@ -1,7 +1,10 @@
 package org.example.spring.security.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.security.Principal;
 
 @Controller
 public class MyController {
@@ -12,7 +15,9 @@ public class MyController {
     }
 
     @GetMapping("/hr_info")
-    public String getInfoForHR() {
+    public String getInfoForHR(@Autowired Principal principal) {
+
+        System.out.println(principal.getName());
         return "view_for_hr";
     }
 
